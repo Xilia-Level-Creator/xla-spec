@@ -13,6 +13,7 @@ when, and only when, they appear in all capitals, as shown here.
 - `Level code`: refers to raw level code, as per
   [PewPew API documentation](https://pewpewlive.github.io/ppl-docs/)
 - `Manifest`: refers to `manifest.xml` file in the root of the `Archive`
+- `PewPew API` refers to official [PewPew API](https://pewpewlive.github.io/ppl-docs/)
 - `XLA`: refers to a file format, which this spec describes.
 
 
@@ -159,7 +160,10 @@ Following is the mapping between XML in `level` tag, and fields in
    `Compiler`, while empty `rank-thresholds-1p` tag maps to value `false`
    of `has_score_leaderboard` tag in `manifest.json`. If `rank-thresholds-1p`
    is not empty, it MUST contain `bronze`, `silver` and `gold` tags (all
-   are integers), which map to `rank_thresholds_1p` in `manifest.json`
+   are integers), which map to `rank_thresholds_1p` in `manifest.json`. If
+   `rank-thresholds-1p` is not empty, but all three values for `bronze`,
+   `silver` and `gold` are 0, the level will not be casual, but also will
+   not give any stars (like `Just Pong`).
 
 Unless stated otherwise, all the mentioned tags MUST NOT be empty in standard
 spec version. If the spec version used includes `d` flag (see `Metadata file`
