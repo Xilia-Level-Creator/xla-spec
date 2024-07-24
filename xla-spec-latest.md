@@ -304,6 +304,14 @@ Inside an `element` tag, there MUST be one and only one `preset` tag,
 zero or more `transforms` tags, zero or more `patches` tags. There
 SHOULD NOT be any other tags present.
 
+Note that the order, in which changes to preset are applied, MUST be:
+1. Transforms (`Compiler` MAY apply them in the order, how they appear
+   in XML)
+2. Patches (`Compiler` MAY apply them in the order, how they appear
+   in XML)
+
+Tags `preset`, `transforms` and `patches` MAY be in any order.
+
 ##### Describing preset
 
 The following is the example of a `preset` tag:
@@ -335,7 +343,66 @@ Read more about creating and using custom presets in
 ##### Describing transformations
 
 Having `transforms` tag is OPTIONAL, there MAY be zero or more of them.
-Each one of those MAY have zero or more `transform` tags.
+Each one of those MAY have zero or more `transform` tags. Together, all
+the `transform` tags in all the `transforms` tags define a set of transforms
+to apply to the preset.
+
+Following is the example of `transform` tag:
+
+```xml
+<transform>
+  <name>mesh.effect.bold</name>
+  <settings>
+    <setting>
+      <key>MULTIPLIER</key>
+      <value type="number">5</value>
+    </setting>
+  </settings>
+</transform>
+```
+
+Each `transform` tag MUST contain `name` tag, with the transform name specified.
+Rules for how the transform names are formatted and what exactly they are, are
+the same, as for presets, so refer to `Describing preset` subsection.
+
+<!-- ###### Decsribing transform settings -->
+
+`transform` tag can contain zero or more `settings` tags. Each one of those can
+contain zero or more `setting` tags. Together, all the `setting` tags in all
+the `settings` tags define a set of settings to apply to the transform.
+
+Following is the example of `setting` tag:
+
+```xml
+<setting>
+  <key>MULTIPLIER</key>
+  <value type="number">2</value>
+</setting>
+```
+
+Each setting MUST contain `key` and `value` tags. Key is a constant, exposed
+by a transform, and `value` is the new value for that constant.
+
+##### Describing patches
+
+Having `patches` tag is OPTIONAL, there MAY be zero or more of them.
+Each one of those MAY have zero or more `patch` tags. Together, all
+the `patch` tags in all the `patches` tags define a set of patches
+to apply to the preset.
+
+Following is the example of `patch` tag:
+
+```xml
+<patch>
+  <key>COLOR</key>
+  <value type="color">538976511</value>
+</patch>
+```
+
+Each setting is formatted similarly to transforms, it MUST contain `key` and
+`value` tags. Key is a constant, exposed by a preset, and `value` is
+the new value for that constant.
+
 
 #### Value types
 
