@@ -332,6 +332,11 @@ Read more about creating and using custom presets in
 `Custom presets / Transforms` subsection of this section.
 *After that, take a look at `lua-spec.md`*
 
+##### Describing transformations
+
+Having `transforms` tag is OPTIONAL, there MAY be zero or more of them.
+Each one of those MAY have zero or more `transform` tags.
+
 #### Value types
 
 Any specified for transform or patch value MUST have a `type` attribute,
