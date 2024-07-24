@@ -12,6 +12,8 @@ when, and only when, they appear in all capitals, as shown here.
 - `Compiler`: refers to a program, which reads (parses) `XLA` format files
 - `Level code`: refers to raw level code, as per
   [PewPew API documentation](https://pewpewlive.github.io/ppl-docs/)
+- `Lua`: refers to a modified version of Lua programming language, used for
+  creating PewPew levels, according to `PewPew API`
 - `Manifest`: refers to `manifest.xml` file in the root of the `Archive`
 - `PewPew API` refers to official [PewPew API](https://pewpewlive.github.io/ppl-docs/)
 - `XLA`: refers to a file format, which this spec describes.
@@ -84,7 +86,9 @@ the project, and also includes both `u` and `d` flags.
 Following are the flags, that you can use to modify spec version:
  - `u`: Unicode characters may be used in parts of the `Archive`
  - `d`: A "loose" variation of a spec. In this version, many values
-   can be left undefined (it is up to `Compiler` to set defaults).
+   can be left undefined (it is up to `compiler` to set defaults).
+ - `g`: In this version, value types (in transforms/patches) may be
+   ommited (it is up to `compiler` to figure out the type).
 
 It is RECOMMENDED to list the flags in the same order, as they appear in
 this list.
@@ -195,7 +199,7 @@ zero or more patches:
    "regularly" is not defined by a preset). Each preset exposes different
    variables/constants to change the visuals/behaviour. Some presets are
    built-in (refer to `xla-builtin.md` - W.I.P.), however other can be created
-   with lua and included into `Archive`.
+   with `Lua` and included into `Archive`.
 2. `Patch` is a single change in a constant (not variable!), defined by a
    preset. Many patches can be applied to a single preset, while single patch
    can only be applied to a single preset. For every constant in a preset,
@@ -207,7 +211,7 @@ zero or more patches:
    be modifying a mesh preset to create multiple copies of it, or making
    an enemy rainbow (with animation). Some transforms are built-in 
    (refer to `xla-builtin.md` - W.I.P.), however other can be created
-   with lua and included into `Archive`.
+   with `Lua` and included into `Archive`.
 
 ### Defining elements in XML
 
@@ -290,3 +294,24 @@ info on XML standard used.
 
 Note how the `element` tag MUST be that of a `xilia://element` namespace,
 and all the child elements MUST inherit that namespace.
+
+#### Value types
+
+Any specified for transform or patch value MUST have a `type` attribute,
+attached to it (unless the `g` flag is set for the `Archive` spec version).
+In that case, in XLA, type MAY be ommited, and it is up to `Compiler` to
+figure out a type. Note that `Compiler` might not support XLA spec versions
+with `g` flag, so if all the types are know, it is recommended to list them
+and not include the `g` flag.
+
+The available types are following (mainly mapping to `Lua` types):
+ - `string`: Any text, MAY be Unicode if `u` flag is present in `Archive`
+    spec version. Otherwise MUST be ASCII. Maps to a `string` in `Lua`
+ - `number`: Integer or float, maps to `number` in `Lua`. No limits on size
+   are enforced by this spec, that is left up to the `Compiler`.
+ - `fx`: Fixed point value, maps to `FixedPoint` type (class) in `Lua`.
+ - `color`: Refers to a color. It is expressed as a hex RGBA value in `Lua`,
+   however XLA format uses RGBA integer (decimal) value.
+
+If a type is specified for an element, it MUST be one of the stated
+above types.
