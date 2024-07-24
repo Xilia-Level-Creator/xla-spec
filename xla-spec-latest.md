@@ -292,8 +292,45 @@ level border), using presets, transforms, and patches:
 Refer to `Structure` section, `Note on XML format` subsection for additional
 info on XML standard used.
 
-Note how the `element` tag MUST be that of a `xilia://element` namespace,
-and all the child elements MUST inherit that namespace.
+#### Spec for creating elements
+
+Start creating an element with an `element` tag, which MUST be that of
+a `xilia://element` namespace, and all the child elements MUST inherit
+that namespace. The `element` tag MUST also include an `id` propery
+with a UNIQUE name, among all the elements (even different types)
+in the `Archive`.
+
+Inside an `element` tag, there MUST be one and only one `preset` tag,
+zero or more `transforms` tags, zero or more `patches` tags. There
+SHOULD NOT be any other tags present.
+
+##### Describing preset
+
+The following is the example of a `preset` tag:
+
+```xml
+<preset>mesh.enemy.baf</preset>
+```
+
+A `preset` tag MUST NOT be empty, and it MUST contain a valid preset name.
+
+Built-in preset name consists of 3 parts, which are separated by a
+period (`.`). Following are those parts:
+ - Preset type, can be one of: `mesh`, `logic`, `spawn`.
+ - Preset category
+ - Preset name
+
+You can find the full list of presets from categories `mesh`, `logic` and
+`spawn` in `xla-builtin.md` doc.
+
+Custom preset name consists of 2 parts, which are separated by a
+period (`.`). Following are those parts:
+ - Preset type, MUST be `custom`.
+ - Preset name
+
+Read more about creating and using custom presets in
+`Custom presets / Transforms` subsection of this section.
+*After that, take a look at `lua-spec.md`*
 
 #### Value types
 
