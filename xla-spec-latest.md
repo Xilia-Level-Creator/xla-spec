@@ -16,6 +16,9 @@ when, and only when, they appear in all capitals, as shown here.
 - `PewPew API` refers to official [PewPew API](https://pewpewlive.github.io/ppl-docs/)
 - `XLA`: refers to a file format, which this spec describes.
 
+Find definitions for terms `Preset`, `Transform` and `Patch` in the
+`Presets / Transforms / Patches` section intro.
+
 
 ## Structure
 
@@ -172,3 +175,37 @@ MAY be empty.
 
 Note that `PewPew API` imposes lenght limits on some of the fields. Those
 are not imposed by this spec, instead it is left up to the `Compiler`.
+
+
+## Presets / Transforms / Patches
+
+One of the key aspects of how XLA describes levels, are elements. Elements
+can represent a mesh, or a piece of level logic, such as "What happens,
+when this enemy collides with a wall" or "How often, where and how this
+enemy spawns".
+
+Each element consists of a single preset, zero or more transforms and
+zero or more patches:
+1. `Preset` is a base building block for the mesh/logic. For meshes it is
+   a general mash shape, such as simple "circle", "square", "cube", "sphere",
+   or more complex "baf-like", "rolling-sphere-like", etc.. For logic it
+   describes the general behaviour with almost no set values (constants),
+   like "Bounce of the walls on collision" or "Enemy spawns regularly in
+   several set places on the map" (note how the "set places on the map" and
+   "regularly" is not defined by a preset). Each preset exposes different
+   variables/constants to change the visuals/behaviour. Some presets are
+   built-in (refer to `xla-builtin.md` - W.I.P.), however other can be created
+   with lua and included into `Archive`.
+2. `Patch` is a single change in a constant (not variable!), defined by a
+   preset. Many patches can be applied to a single preset, while single patch
+   can only be applied to a single preset. For every constant in a preset,
+   there MUST be only one patch, modifying that constant. Each patch is
+   declared as a key-value pair, where key is the constant to be changed
+   (exposed by preset), and the value is a new value for that constant.
+3. `Transform` is a more complex version of a patch. They can modify both
+   variables and constants of presets. An example of a transform would
+   be modifying a mesh preset to create multiple copies of it, or making
+   an enemy rainbow (with animation). Some transforms are built-in 
+   (refer to `xla-builtin.md` - W.I.P.), however other can be created
+   with lua and included into `Archive`.
+
