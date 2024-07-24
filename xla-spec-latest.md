@@ -1,4 +1,4 @@
-# XLA Specification v0.0.1
+# XLA Specification v1.0.1
 
 
 ## Definitions
@@ -68,17 +68,17 @@ That file contains the version of this spec, which is used for that
 particular `Archive`. The format is as following:
 
 ```
-v0.0.1-ud
+v1.0.0-ud
 ```
 
 Include 6 or more characters. Start the version in `.xilia` file with
 the character `v`, then the version itself (semantic versioning v2 is used).
 
-This will give you file contents like `v0.0.1`. If you want to add any flags,
+This will give you file contents like `v1.0.0`. If you want to add any flags,
 include a hyphen after the version number, and list the flags together, one
 letter for each.
 
-The given above example, `v0.0.1-ud`, indicates using the version `0.0.1` for
+The given above example, `v1.0.0-ud`, indicates using the version `1.0.0` for
 the project, and also includes both `u` and `d` flags.
 
 ### Version flags
