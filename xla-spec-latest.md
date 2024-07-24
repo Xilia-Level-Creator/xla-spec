@@ -184,7 +184,7 @@ can represent a mesh, or a piece of level logic, such as "What happens,
 when this enemy collides with a wall" or "How often, where and how this
 enemy spawns".
 
-Each element consists of a single preset, zero or more transforms and
+Each element MUST consist of a single preset, zero or more transforms and
 zero or more patches:
 1. `Preset` is a base building block for the mesh/logic. For meshes it is
    a general mash shape, such as simple "circle", "square", "cube", "sphere",
@@ -209,3 +209,84 @@ zero or more patches:
    (refer to `xla-builtin.md` - W.I.P.), however other can be created
    with lua and included into `Archive`.
 
+### Defining elements in XML
+
+Every element, apart from patches/transforms and a preset, MUST 
+also include an id (string or integer value, which is up to `Archive`
+creator to decide); that id MUST me unique across all the
+elements in a given `Archive` (even across meshes/logic/etc).
+
+Presets do not include any additional info, except for the preset name itself
+(for built-in presets) or name of the preset asset (for custom presets).
+
+The following is the example of defining a complex element (mesh for Eskiv
+level border), using presets, transforms, and patches:
+
+```xml
+<element id="eskiv-border" xmlns="xilia://element">
+
+  <preset>mesh.trivial.rectangle</preset>
+
+  <transforms>
+
+    <transform>
+      <name>mesh.effect.clone-and-fade</name>
+      <settings>
+        <setting>
+          <key>MULTIPLIER</key>
+          <value type="number">13</value>
+        </setting>
+        <setting>
+          <key>COLOR_START</key>
+          <value type="color">15597823</value>
+        </setting>
+        <setting>
+          <key>COLOR_END</key>
+          <value type="color">2097407</value>
+        </setting>
+      </settings>
+    </transform>
+
+    <transform>
+      <name>mesh.clone.clone-around</name>
+      <settings>
+        <setting>
+          <key>MULTIPLIER</key>
+          <value type="string">8</value>
+        </setting>
+        <setting>
+          <key>ROTATE</key>
+          <value type="bool">0</value>
+        </setting>
+        <setting>
+          <key>DISTANCE</key>
+          <value type="fx">50</value>
+        </setting>
+      </settings>
+    </transform>
+
+  </transforms>
+
+  <patches>
+    <patch>
+      <key>WIDTH</key>
+      <value type="fx">1000</value>
+    </patch>
+    <patch>
+      <key>HEIGHT</key>
+      <value type="fx">700</value>
+    </patch>
+    <patch>
+      <key>COLOR</key>
+      <value type="color">16711935</value>
+    </patch>
+  </patches>
+
+</element>
+```
+
+Refer to `Structure` section, `Note on XML format` subsection for additional
+info on XML standard used.
+
+Note how the `element` tag MUST be that of a `xilia://element` namespace,
+and all the child elements MUST inherit that namespace.
