@@ -1,4 +1,4 @@
-# XLA Specification v1.0.1
+# XLA Specification v1.0.0
 
 
 ## Definitions
