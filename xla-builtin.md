@@ -28,7 +28,7 @@ described here, full name will be still listed in the header!
 
 Trivial mesh presets. Simple shapes, intended for general usage.
 
-#### mesh.trivial.rectangle
+#### 1. mesh.trivial.rectangle
 
 Mesh to be used for 2D square/rectangular shapes. It is a small `1fx` by `1fx`
 square initially, with configurable size and color (one solid color, or
@@ -42,7 +42,7 @@ clockwise). Note that `width` and `height` variables take precedance over
 
 **Exposed variables:** `WIDTH`, `HEIGHT`, `SIZE`, `COLOR`
 
-#### mesh.trivial.ellipse
+#### 2. mesh.trivial.ellipse
 
 Mesh to be used for 2D ellipse/circle shape. It is a small `1fx` by `1fx`
 circle initially, with configurable radiuses (first one is horizontal,
@@ -55,7 +55,7 @@ the quality (which is the number of segments used to create an ellipse/circle)
 
 **Exposed variables:** `RADIUS1`, `RADIUS2`, `COLOR`, `QUALITY`
 
-#### mesh.trivial.polygon
+#### 3. mesh.trivial.polygon
 
 Mesh to be used for 2D regular polygons. It is a small triangle (that
 of 1fx radius) initially, with configurable radius, color (one solid color,
@@ -72,7 +72,7 @@ or a list of colors, for each vertex), and vertex number.
 Enemy mesh presets. Resemble official and some custom enemies, intended to be
 used for recreating given enemies, or creating their variations.
 
-#### mesh.enemy.asteroid
+#### 4. mesh.enemy.asteroid
 
 Mesh, that closely resembles official asteroid enemy.
 
@@ -82,7 +82,7 @@ Mesh, that closely resembles official asteroid enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.baf
+#### 5. mesh.enemy.baf
 
 Mesh, that closely resembles official baf enemy.
 
@@ -92,7 +92,7 @@ Mesh, that closely resembles official baf enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.inertiac
+#### 6. mesh.enemy.inertiac
 
 Mesh, that closely resembles official inertiac enemy.
 
@@ -102,7 +102,7 @@ Mesh, that closely resembles official inertiac enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.mothership
+#### 7. mesh.enemy.mothership
 
 Mesh, that closely resembles official mothership enemy.
 
@@ -112,7 +112,7 @@ Mesh, that closely resembles official mothership enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.mothership_bullet
+#### 8. mesh.enemy.mothership_bullet
 
 Mesh, that closely resembles official mothership bullet.
 
@@ -122,7 +122,7 @@ Mesh, that closely resembles official mothership bullet.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.rolling_cube
+#### 9. mesh.enemy.rolling_cube
 
 Mesh, that closely resembles official rolling cube enemy.
 
@@ -132,7 +132,7 @@ Mesh, that closely resembles official rolling cube enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.rolling_sphere
+#### 10. mesh.enemy.rolling_sphere
 
 Mesh, that closely resembles official rolling sphere enemy.
 
@@ -142,7 +142,7 @@ Mesh, that closely resembles official rolling sphere enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.ufo
+#### 11. mesh.enemy.ufo
 
 Mesh, that closely resembles official ufo enemy.
 
@@ -152,7 +152,7 @@ Mesh, that closely resembles official ufo enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.wary
+#### 12. mesh.enemy.wary
 
 Mesh, that closely resembles official wary enemy.
 
@@ -162,7 +162,7 @@ Mesh, that closely resembles official wary enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.crowder
+#### 13. mesh.enemy.crowder
 
 Mesh, that closely resembles official crowder enemy.
 
@@ -172,7 +172,7 @@ Mesh, that closely resembles official crowder enemy.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.wary_missile
+#### 14. mesh.enemy.wary_missile
 
 Mesh, that closely resembles official wary missile.
 
@@ -182,7 +182,7 @@ Mesh, that closely resembles official wary missile.
 
 **Exposed variables:** `COLOR`, `SPEED`
 
-#### mesh.enemy.ufo_bullet
+#### 15. mesh.enemy.ufo_bullet
 
 Mesh, that closely resembles official ufo bullet.
 
