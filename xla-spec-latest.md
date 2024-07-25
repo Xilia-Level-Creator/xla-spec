@@ -38,7 +38,7 @@ The general structure of files inside the tarball is as follows:
     │   ├── <plugin2>.lua
     │   └── <plugin3>.lua
     ├── mesh.xml
-    ├── entity.xml
+    ├── logic.xml
     ├── level.xml
     ├── manifest.xml
     └── .xilia
@@ -57,9 +57,15 @@ It is RECOMMENDED to specify XML version in `.xml` files, like so:
 
 This might be used by the `Compiler` to correctly parse the files.
 
+You also SHOULD stick to XML v1.0 for this spec, unless you have a use case
+with some complex characters involved. 
+
 Also note that the spec makes heavy use of XML namespaces, they must be a valid
 [IRI](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier).
 
+<!-- Remove this statement? -->
+The spec makes use of XML tag attributes as well. Unless stated otherwise, you
+SHOULD NOT include them.
 
 ## Metadata file (`.xilia`)
 
@@ -386,7 +392,15 @@ The available types are following (mainly mapping to `Lua` types):
 If a type is specified for an element, it MUST be one of the stated
 above types.
 
-## Describing meshes
+
+## Meshes / entities / level logic
+
+This section of the spec describes such files as `mesh.xml`, `logic.xml`
+and `level.xml`. They mainly make use of noted above elements (presets/
+transforms/patches), so refer to the `Presets / Transforms / Patches` section
+for missing info.
+
+### Describing meshes
 
 Information about all the meshes is stored in `mesh.xml` file, inside the
 `Archive`. Following is a simplified example of how `mesh.xml` might look
@@ -404,3 +418,90 @@ like:
   <patches>...</patches>
 </element>
 ```
+
+`mesh.xml` file contains zero or more `element` tags. Note that the type
+for the element is defined by its preset: `mesh.xml` MUST only contain `mesh`
+elements; all the `mesh` elements MUST only be located inside `mesh.xml` file.
+
+All elements inside `mesh.xml` define a set of meshes, that a level exposes,
+which then can be used by other files/elements.
+
+### Game logic elements
+
+Information about game logic elements is stored in `logic.xml` file, inside
+the `Archive`. Following is a simplified example of how `logic.xml` might
+look like:
+
+```xml
+<?xml version="1.0"?>
+
+<element id="3" xmlns="xilia://element">
+  <preset>logic.spawn.point_set</preset>
+</element>
+
+<element id="4" xmlns="xilia://element">
+  <preset>logic.wall.bounce</preset>
+  <patches>...</patches>
+</element>
+```
+
+`logic.xml` file contains zero or more `element` tags. Note that the type
+for the element is defined by its preset: `logic.xml` MUST only contain `logic`
+elements; all the `logic` elements MUST only be located inside `logic.xml` file.
+
+All elements inside `logic.xml` define a set of game logic elements,
+that a level exposes, to be used by other files/elements.
+
+### Main level file
+
+General level logic is defined in `level.xml`. This file also refers to other
+elements present:
+
+![Flowchart](https://jpcdn.it/img/29b835a5e36ebb49beac086326c01cde.png)
+
+Note for `Compiler` development: if an element is not referenced anywhere in
+`level.xml`, it is safe to assume that the element is redundant. This can also
+help, when minifying XLA files.
+
+#### Structure example for `level.xml`
+
+Following is a simplified example of how `level.xml` file might look like:
+
+```xml
+<?xml version="1.0"?>
+
+<entity xmlns="xilia://entity">
+  <logic>4</logic>
+</entity>
+
+<entity xmlns="xilia://entity">
+  <mesh>1</mesh>
+  <logic>3</logic>
+  <logic>string-name-works-too</logix>
+</entity>
+```
+
+`level.xml` file consists of zero or more `entity` tags. Note that each
+`entity` tag MUST be that of a `xilia://entity` namespace, and all the
+child elements MUST inherit that namespace.
+
+Each `entity` tag can contain zero or one `mesh` tag. It MUST NOT contain
+more then one `mesh` tag. Additionally, each `entity` tag can contain
+zero or more `logic` tags. Note that `entity` tag SHOULD NOT contain any
+other tags, apart from `mesh` and `logic`.
+
+`mesh` tag contains an id, which MUST reference one of the elements with
+`mesh` type (an element in `mesh.xml`, which uses preset with `mesh` type,
+and which id matches that of id inside `mesh` tag of `entity` tag).
+
+`logic` tag contains an id, which MUST reference one of the elements with
+`logic` type (an element in `logic.xml`, which uses preset with `logic` type,
+and which id matches that of id inside `logic` tag of `entity` tag).
+
+If the `mesh` tag is absent in `entity` tag, no mesh is set for an entity.
+
+Note that each `logic` tag references a logic element. There MAY be several
+`logic` tags per `entity`, but there MUST NOT be two or more `logic` tags,
+that reference `logic` elements with presets, whose category is the same
+(refer to `Describing preset` subsection of `Presets / Transforms / Patches`
+section).
