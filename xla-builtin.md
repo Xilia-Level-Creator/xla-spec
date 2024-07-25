@@ -74,7 +74,7 @@ used for recreating given enemies, or creating their variations.
 
 #### 4. mesh.enemy.asteroid
 
-Mesh, that closely resembles official asteroid enemy.
+Mesh, that closely resembles official asteroid enemy. Spec for it is W.I.P.
 
 **Full name:** mesh.enemy.asteroid
 
@@ -84,13 +84,17 @@ Mesh, that closely resembles official asteroid enemy.
 
 #### 5. mesh.enemy.baf
 
-Mesh, that closely resembles official baf enemy.
+Mesh, that closely resembles official baf enemy. There are no different
+variations, such as red or blue baf, since that can be configured through
+color variable (a single solid color, or two colors for start/end gradient).
+You can change the size, note that separate parameters, like lenght and radius
+take precedance over that.
 
 **Full name:** mesh.enemy.baf
 
 **Human-readable name:** Baf Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:** `COLOR`, `SPEED`, `SIZE`, `LENGHT`, `RADIUS`
 
 #### 6. mesh.enemy.inertiac
 
