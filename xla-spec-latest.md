@@ -313,7 +313,7 @@ Example of that would be:
 That would refer to `owo.lua` file in `assets/` folder of the `Archive`.
 
 Note how the name of all custom presets AND transforms MUST be UNIQUE
-across all the preset types (mesh/logic/spawn).
+across all the preset types (mesh/logic/spawn)
 
 Take a look at `lua-spec.md` for more info on how to format `Lua` code,
 for it to be used as preset (or transform).
@@ -362,6 +362,8 @@ Following is the example of `setting` tag:
 Each setting MUST contain `key` and `value` tags. Key is a constant, exposed
 by a transform, and `value` is the new value for that constant.
 
+Note that keys are CASE SENSITIVE.
+
 ##### Describing patches
 
 Having `patches` tag is OPTIONAL, there MAY be zero or more of them.
@@ -382,6 +384,7 @@ Each setting is formatted similarly to transforms, it MUST contain `key` and
 `value` tags. Key is a constant, exposed by a preset, and `value` is
 the new value for that constant.
 
+Note that keys are CASE SENSITIVE, as in transforms.
 
 #### Value types
 
@@ -400,9 +403,36 @@ The available types are following (mainly mapping to `Lua` types):
  - `fx`: Fixed point value, maps to `FixedPoint` type (class) in `Lua`.
  - `color`: Refers to a color. It is expressed as a hex RGBA value in `Lua`,
    however XLA format uses RGBA integer (decimal) value.
+ - `list`: Refers to a list of elements, maps to `table` in `Lua`. A `value`
+   tag with `list` type as an attribute can contain zero or more
+   `list-element` tags, and SHOULD NOT contain any other tags, apart from
+   `list-element`. If no `list-element` tags are present, the list is empty.
+   Otherwise, each `list-element` tag corresponds to one value in a list.
+   It MUST contain one and ONLY one `value` tag; and SHOULD NOT cotain any
+   other tags.
 
 If a type is specified for an element, it MUST be one of the stated
 above types.
+
+The following is the example of using `list` type:
+
+```xml
+<value type="list">
+  <list>
+    <list-element>
+      <value type="list">
+        <list/>
+      </value>
+    </list-element>
+    <list-element><value type="number">2</value></list-element>
+    <list-element><value type="string">text</value></list-element>
+    ...
+  </list>
+</value>
+```
+
+As can be seen in the example, lists can be nested, as well as hold
+different types of elements inside it.
 
 
 ## Meshes / entities / level logic
