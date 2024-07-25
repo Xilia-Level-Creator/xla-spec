@@ -33,10 +33,10 @@ The general structure of files inside the tarball is as follows:
 ```
 .
 └── <level>.xla/
-    ├── plugins/
-    │   ├── <plugin1>.lua
-    │   ├── <plugin2>.lua
-    │   └── <plugin3>.lua
+    ├── assets/
+    │   ├── <asset1>.lua
+    │   ├── <asset2>.lua
+    │   └── <asset3>.lua
     ├── mesh.xml
     ├── logic.xml
     ├── level.xml
@@ -298,14 +298,25 @@ period (`.`). Following are those parts:
 You can find the full list of presets from categories `mesh`, `logic` and
 `spawn` in `xla-builtin.md` doc.
 
-Custom preset name consists of 2 parts, which are separated by a
+Custom preset name consists of 3 parts, which are separated by a
 period (`.`). Following are those parts:
- - Preset type, MUST be `custom`.
- - Preset name
+ - Preset type, can be one of: `mesh`, `logic`, `spawn`.
+ - Preset category, MUST be `custom`
+ - Preset name (filename)
 
-Read more about creating and using custom presets in
-`Custom presets / Transforms` subsection of this section.
-*After that, take a look at `lua-spec.md`*
+Example of that would be:
+
+```xml
+<preset>mesh.custom.owo</preset>
+```
+
+That would refer to `owo.lua` file in `assets/` folder of the `Archive`.
+
+Note how the name of all custom presets AND transforms MUST be UNIQUE
+across all the preset types (mesh/logic/spawn).
+
+Take a look at `lua-spec.md` for more info on how to format `Lua` code,
+for it to be used as preset (or transform).
 
 ##### Describing transformations
 
@@ -330,7 +341,8 @@ Following is the example of `transform` tag:
 
 Each `transform` tag MUST contain `name` tag, with the transform name specified.
 Rules for how the transform names are formatted and what exactly they are, are
-the same, as for presets, so refer to `Describing preset` subsection.
+the same, as for presets, so refer to `Describing preset` subsection. Process
+of creatin custom transforms is also similar.
 
 <!-- ###### Decsribing transform settings -->
 
