@@ -223,8 +223,8 @@ elements in a given `Archive` (even across meshes/logic/etc).
 Presets do not include any additional info, except for the preset name itself
 (for built-in presets) or name of the preset asset (for custom presets).
 
-The following is the example of defining a complex element (mesh for Eskiv
-level border), using presets, transforms, and patches:
+The following is the example of defining a complex element, using presets,
+transforms, and patches:
 
 ```xml
 <element id="eskiv-border" xmlns="xilia://element">
@@ -232,43 +232,8 @@ level border), using presets, transforms, and patches:
   <preset>mesh.trivial.rectangle</preset>
 
   <transforms>
-
-    <transform>
-      <name>mesh.effect.clone-and-fade</name>
-      <settings>
-        <setting>
-          <key>MULTIPLIER</key>
-          <value type="number">13</value>
-        </setting>
-        <setting>
-          <key>COLOR_START</key>
-          <value type="color">15597823</value>
-        </setting>
-        <setting>
-          <key>COLOR_END</key>
-          <value type="color">2097407</value>
-        </setting>
-      </settings>
-    </transform>
-
-    <transform>
-      <name>mesh.clone.clone-around</name>
-      <settings>
-        <setting>
-          <key>MULTIPLIER</key>
-          <value type="string">8</value>
-        </setting>
-        <setting>
-          <key>ROTATE</key>
-          <value type="bool">0</value>
-        </setting>
-        <setting>
-          <key>DISTANCE</key>
-          <value type="fx">50</value>
-        </setting>
-      </settings>
-    </transform>
-
+    <transform>...</transform>
+    <transform>...</transform>
   </transforms>
 
   <patches>
@@ -279,10 +244,6 @@ level border), using presets, transforms, and patches:
     <patch>
       <key>HEIGHT</key>
       <value type="fx">700</value>
-    </patch>
-    <patch>
-      <key>COLOR</key>
-      <value type="color">16711935</value>
     </patch>
   </patches>
 
@@ -424,3 +385,22 @@ The available types are following (mainly mapping to `Lua` types):
 
 If a type is specified for an element, it MUST be one of the stated
 above types.
+
+## Describing meshes
+
+Information about all the meshes is stored in `mesh.xml` file, inside the
+`Archive`. Following is a simplified example of how `mesh.xml` might look
+like:
+
+```xml
+<?xml version="1.0"?>
+
+<element id="1" xmlns="xilia://element">
+  <preset>mesh.trivial.rectangle</preset>
+</element>
+
+<element id="2" xmlns="xilia://element">
+  <preset>mesh.enemy.ufo</preset>
+  <patches>...</patches>
+</element>
+```
