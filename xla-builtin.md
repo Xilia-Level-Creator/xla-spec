@@ -37,7 +37,9 @@ clockwise). Note that `width` and `height` variables take precedance over
 `size` variable.
 
 **Full name:** mesh.trivial.rectangle
+
 **Human-readable name:** Simple Rectangle
+
 **Exposed variables:** `WIDTH`, `HEIGHT`, `SIZE`, `COLOR`
 
 #### mesh.trivial.ellipse
@@ -48,7 +50,9 @@ second one - vertical axis) and color (one solid color). You can also adjust
 the quality (which is the number of segments used to create an ellipse/circle)
 
 **Full name:** mesh.trivial.ellipse
+
 **Human-readable name:** Simple Ellipse
+
 **Exposed variables:** `RADIUS1`, `RADIUS2`, `COLOR`, `QUALITY`
 
 #### mesh.trivial.polygon
@@ -58,7 +62,9 @@ of 1fx radius) initially, with configurable radius, color (one solid color,
 or a list of colors, for each vertex), and vertex number.
 
 **Full name:** mesh.trivial.polygon
+
 **Human-readable name:** Regular Polygon
+
 **Exposed variables:** `RADIUS`, `COLOR`, `MULTIPLIER`
 
 ### Category: enemy
@@ -71,7 +77,9 @@ used for recreating given enemies, or creating their variations.
 Mesh, that closely resembles official asteroid enemy.
 
 **Full name:** mesh.enemy.asteroid
+
 **Human-readable name:** Asteroid Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.baf
@@ -79,7 +87,9 @@ Mesh, that closely resembles official asteroid enemy.
 Mesh, that closely resembles official baf enemy.
 
 **Full name:** mesh.enemy.baf
+
 **Human-readable name:** Baf Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.inertiac
@@ -87,7 +97,9 @@ Mesh, that closely resembles official baf enemy.
 Mesh, that closely resembles official inertiac enemy.
 
 **Full name:** mesh.enemy.inertiac
+
 **Human-readable name:** Inertiac Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.mothership
@@ -95,7 +107,9 @@ Mesh, that closely resembles official inertiac enemy.
 Mesh, that closely resembles official mothership enemy.
 
 **Full name:** mesh.enemy.mothership
+
 **Human-readable name:** Mothership Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.mothership_bullet
@@ -103,7 +117,9 @@ Mesh, that closely resembles official mothership enemy.
 Mesh, that closely resembles official mothership bullet.
 
 **Full name:** mesh.enemy.mothership_bullet
+
 **Human-readable name:** Mothership Bullet
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.rolling_cube
@@ -111,7 +127,9 @@ Mesh, that closely resembles official mothership bullet.
 Mesh, that closely resembles official rolling cube enemy.
 
 **Full name:** mesh.enemy.rolling_cube
+
 **Human-readable name:** Rolling Cube Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.rolling_sphere
@@ -119,7 +137,9 @@ Mesh, that closely resembles official rolling cube enemy.
 Mesh, that closely resembles official rolling sphere enemy.
 
 **Full name:** mesh.enemy.rolling_sphere
+
 **Human-readable name:** Rolling Sphere Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.ufo
@@ -127,7 +147,9 @@ Mesh, that closely resembles official rolling sphere enemy.
 Mesh, that closely resembles official ufo enemy.
 
 **Full name:** mesh.enemy.ufo
+
 **Human-readable name:** Ufo Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.wary
@@ -135,7 +157,9 @@ Mesh, that closely resembles official ufo enemy.
 Mesh, that closely resembles official wary enemy.
 
 **Full name:** mesh.enemy.wary
+
 **Human-readable name:** Wary Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.crowder
@@ -143,7 +167,9 @@ Mesh, that closely resembles official wary enemy.
 Mesh, that closely resembles official crowder enemy.
 
 **Full name:** mesh.enemy.crowder
+
 **Human-readable name:** Crowder Enemy
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.wary_missile
@@ -151,7 +177,9 @@ Mesh, that closely resembles official crowder enemy.
 Mesh, that closely resembles official wary missile.
 
 **Full name:** mesh.enemy.wary_missile
+
 **Human-readable name:** Wary Missile
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 #### mesh.enemy.ufo_bullet
@@ -159,7 +187,9 @@ Mesh, that closely resembles official wary missile.
 Mesh, that closely resembles official ufo bullet.
 
 **Full name:** mesh.enemy.ufo_bullet
+
 **Human-readable name:** Ufo Bullet
+
 **Exposed variables:** `COLOR`, `SPEED`
 
 
@@ -167,8 +197,8 @@ Mesh, that closely resembles official ufo bullet.
 <!-- mesh.enemy.bombmbles -->
 <!-- mesh.enemy.player_bullet -->
 <!-- mesh.enemy.bomb_explosion -->
-<!-- mesh-readable.enemy.player_explosion -->
-<!-- mesh.ablesenemy.bonus -->
+<!-- mesh.enemy.player_explosion -->
+<!-- mesh.enemy.bonus -->
 <!-- mesh.enemy.floating_message -->
 <!-- mesh.enemy.pointonium -->
 <!-- mesh.enemy.bonus_implosion -->
