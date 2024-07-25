@@ -313,7 +313,7 @@ Example of that would be:
 That would refer to `owo.lua` file in `assets/` folder of the `Archive`.
 
 Note how the name of all custom presets AND transforms MUST be UNIQUE
-across all the preset types (mesh/logic/spawn)
+across all the preset types (mesh/logic/spawn).
 
 Take a look at `lua-spec.md` for more info on how to format `Lua` code,
 for it to be used as preset (or transform).
