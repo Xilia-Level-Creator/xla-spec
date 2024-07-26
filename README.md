@@ -15,4 +15,4 @@ Refer to `xla-spec-latest.md` for more info on how the latest version of .xla fi
   - [ ] Flipping meshes
   - [ ] Event system (+listeners)
   - [ ] Consider more values, affected by `d` version flag
-  - [ ] Tarball support back
+  - [x] Tarball support back
