@@ -55,7 +55,7 @@ XLA Specification v1.0.0
 
 `XLA` is a complex file format.
 Any assets are stored alongside data, for which XML format is used.
-A tarball is created from those, to pack everything into one file.
+A gzip archive is created from those, to pack everything into one file.
 
 The general structure of files inside the tarball is as follows:
 
