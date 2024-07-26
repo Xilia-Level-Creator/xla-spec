@@ -7,8 +7,8 @@ Refer to `xla-spec-latest.md` for more info on how the latest version of .xla fi
 
 ## ToDo list
 
-- [ ] Add `examples` with some levels, implemented via .xla
-- [ ] Develop and document `xla-builtin.md` doc, describing built-in presets/transforms/patches.
+- [x] Add `examples` with some levels, implemented via .xla
+- [x] Develop and document `xla-builtin.md` doc, describing built-in presets/transforms/patches.
 - [ ] Develop and document `lua-spec.md` doc (maybe different name?), describing custom presets/transforms/patches
 - [ ] Consider some changes to `xla-spec-latest.md`
   - [ ] Support more color formats
