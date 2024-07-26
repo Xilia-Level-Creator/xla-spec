@@ -33,14 +33,16 @@ Trivial mesh presets. Simple shapes, intended for general usage.
 Mesh to be used for 2D square/rectangular shapes. It is a small `1fx` by `1fx`
 square initially, with configurable size and color (one solid color, or
 a list of colors for all 4 points, starting from bottom-left point and going
-clockwise). Note that `width` and `height` variables take precedance over
-`size` variable.
+clockwise).
 
 **Full name:** mesh.trivial.rectangle
 
 **Human-readable name:** Simple Rectangle
 
-**Exposed variables:** `WIDTH`, `HEIGHT`, `SIZE`, `COLOR`
+**Exposed variables:**
+ - `WIDTH`: fx - Rectangle width
+ - `HEIGHT`: fx - Rectangle height
+ - `COLOR`: color|list\[color\] - Single color, or a color for each vertex
 
 #### 2. mesh.trivial.ellipse
 
@@ -53,7 +55,11 @@ the quality (which is the number of segments used to create an ellipse/circle)
 
 **Human-readable name:** Simple Ellipse
 
-**Exposed variables:** `RADIUS1`, `RADIUS2`, `COLOR`, `QUALITY`
+**Exposed variables:**
+ - `RADIUS1`: fx - Horizontal radius
+ - `RADIUS2`: fx - Vertical radius
+ - `COLOR`: color - Ellipse color
+ - `QUALITY`: number - Quality (number of segments)
 
 #### 3. mesh.trivial.polygon
 
@@ -65,7 +71,10 @@ or a list of colors, for each vertex), and vertex number.
 
 **Human-readable name:** Regular Polygon
 
-**Exposed variables:** `RADIUS`, `COLOR`, `MULTIPLIER`
+**Exposed variables:**
+ - `RADIUS`: fx - Polygon radius
+ - `COLOR`: color|list\[color\] - Single color, or a color for each vertex
+ - `MULTIPLIER`: number - Number of vertexes in a polygon
 
 ### Category: enemy
 
@@ -80,121 +89,163 @@ Mesh, that closely resembles official asteroid enemy. Spec for it is W.I.P.
 
 **Human-readable name:** Asteroid Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color - Enemy color
 
 #### 5. mesh.enemy.baf
 
-Mesh, that closely resembles official baf enemy. There are no different
+Mesh, that closely resembles official BAF enemy. There are no different
 variations, such as red or blue baf, since that can be configured through
 color variable (a single solid color, or two colors for start/end gradient).
-You can change the size, note that separate parameters, like lenght and radius
-take precedance over that.
+You can change the size as well. Proportions will stay the same, as in
+official BAF, but you can use transforms to stretch it to your liking.
 
 **Full name:** mesh.enemy.baf
 
 **Human-readable name:** Baf Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`, `SIZE`, `LENGHT`, `RADIUS`
+**Exposed variables:**
+ - `COLOR`: color|list\[color\] - Single color, or two colors (front and back)
+ - `SCALE`: fx - BAF scale (relative to default)
 
 #### 6. mesh.enemy.inertiac
 
-Mesh, that closely resembles official inertiac enemy.
+Mesh, that closely resembles official inertiac enemy. You can set two
+different colors, mesh scale and animation speed.
 
 **Full name:** mesh.enemy.inertiac
 
 **Human-readable name:** Inertiac Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: list[color] - Two colors for inertiac
+ - `SCALE`: fx - Inertiac scale (relative to default)
+ - `ANIMATION_SPEED`: number - How fast the inertiac spins
 
 #### 7. mesh.enemy.mothership
 
-Mesh, that closely resembles official mothership enemy.
+Mesh, that closely resembles official mothership enemy. You can set a color,
+and mesh scale. Use multiplier property to set the number of vertexes for
+a mothership. You can also modify the animation speed.
 
 **Full name:** mesh.enemy.mothership
 
 **Human-readable name:** Mothership Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color - Enemy color
+ - `SCALE`: fx - Mothership scale (relative to default)
+ - `MULTIPLIER`: number - Number of vertexes (mothership type)
+ - `ANIMATION_SPEED`: number - How fast the mothership spins
 
 #### 8. mesh.enemy.mothership_bullet
 
-Mesh, that closely resembles official mothership bullet.
+Mesh, that closely resembles official mothership bullet (3D).
 
 **Full name:** mesh.enemy.mothership_bullet
 
 **Human-readable name:** Mothership Bullet
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color - Bullet color
+ - `SCALE`: fx - Bullet scale (relative to default)
+ - `MULTIPLIER`: number - "Spikiness" factor (how much spikes in a bullet)
 
 #### 9. mesh.enemy.rolling_cube
 
-Mesh, that closely resembles official rolling cube enemy.
+Mesh, that closely resembles official rolling cube enemy. You can set a
+single color, or a separate color for each one of 8 corners.
 
 **Full name:** mesh.enemy.rolling_cube
 
 **Human-readable name:** Rolling Cube Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color|list\[color\] - Single color, or a color for each corner
+ - `SCALE`: fx - Rolling cube scale (relative to default)
 
 #### 10. mesh.enemy.rolling_sphere
 
-Mesh, that closely resembles official rolling sphere enemy.
+Mesh, that closely resembles official rolling sphere enemy. You can set a
+color, and a scale. Also "density" parameter is avaiable - how many lines
+the mesh will consist of.
 
 **Full name:** mesh.enemy.rolling_sphere
 
 **Human-readable name:** Rolling Sphere Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color - Enemy color
+ - `SCALE`: fx - Rolling sphere scale (relative to default)
+ - `DENSITY`: number - Mesh density
 
 #### 11. mesh.enemy.ufo
 
-Mesh, that closely resembles official ufo enemy.
+Mesh, that closely resembles official ufo enemy. You can change the color
+(single color or 3 color gradient), and a scale.
 
 **Full name:** mesh.enemy.ufo
 
-**Human-readable name:** Ufo Enemy
+**Human-readable name:** UFO Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color|list\[color\] - Single color, or 3 colors (gradient)
+ - `SCALE`: fx - UFO sphere scale (relative to default)
 
 #### 12. mesh.enemy.wary
 
-Mesh, that closely resembles official wary enemy.
+Mesh, that closely resembles official wary enemy. You can set 2 colors and
+a scale, as well as modifying the number of vertexes and/or lines.
 
 **Full name:** mesh.enemy.wary
 
 **Human-readable name:** Wary Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR1`: color - Color for even stripes
+ - `COLOR2`: color - Color for odd stripes
+ - `SCALE`: fx - Wary scale (relative to default)
+ - `MULTIPLIER`: number - Amount of vertexes (wary as a polygon)
+ - `LAYERS`: number - Amount of differently colored stripes
 
 #### 13. mesh.enemy.crowder
 
-Mesh, that closely resembles official crowder enemy.
+Mesh, that closely resembles official crowder enemy. Spec for it is W.I.P.
 
 **Full name:** mesh.enemy.crowder
 
 **Human-readable name:** Crowder Enemy
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color - Enemy color
+ - `SCALE`: fx - Crowder scale (relative to default)
 
 #### 14. mesh.enemy.wary_missile
 
-Mesh, that closely resembles official wary missile.
+Mesh, that closely resembles official wary missile. You can send two colors
+(fill and outline) and a scale.
 
 **Full name:** mesh.enemy.wary_missile
 
 **Human-readable name:** Wary Missile
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR1`: color - Fill color
+ - `COLOR2`: color - Outline color
+ - `SCALE`: fx - Missile scale (relative to default)
 
 #### 15. mesh.enemy.ufo_bullet
 
-Mesh, that closely resembles official ufo bullet.
+Mesh, that closely resembles official ufo bullet. You can set a color and
+a scale.
 
 **Full name:** mesh.enemy.ufo_bullet
 
 **Human-readable name:** Ufo Bullet
 
-**Exposed variables:** `COLOR`, `SPEED`
+**Exposed variables:**
+ - `COLOR`: color - Enemy color
+ - `SCALE`: fx - Bullet scale (relative to default)
 
 
 <!-- mesh.enemy.ship -->
