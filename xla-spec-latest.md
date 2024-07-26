@@ -112,6 +112,9 @@ particular `Archive`. The format is as following:
 v1.0.0-ud
 ```
 
+Note that `.xilia` file MUST be encoded as ASCII, no matter what flags
+are set.
+
 Include 6 or more characters. Start the version in `.xilia` file with
 the character `v`, then the version itself (semantic versioning v2 is used).
 
@@ -125,7 +128,9 @@ the project, and also includes both `u` and `d` flags.
 ### Version flags
 
 Following are the flags, that you can use to modify spec version:
- - `u`: Unicode characters may be used in parts of the `Archive`
+ - `u`: Unicode characters may be used in parts of the `Archive`. If this flag
+   is specified, all the files MUST be encoded as `UTF-8`. Otherwise, every
+   file MUST be encoded as `ASCII`.
  - `d`: A "loose" variation of a spec. In this version, many values
    can be left undefined (it is up to `compiler` to set defaults).
  - `g`: In this version, value types (in transforms/patches) may be
