@@ -129,8 +129,8 @@ the project, and also includes both `u` and `d` flags.
 
 Following are the flags, that you can use to modify spec version:
  - `u`: Unicode characters may be used in parts of the `Archive`. If this flag
-   is specified, all the files MUST be encoded as `UTF-8`. Otherwise, every
-   file MUST be encoded as `ASCII`.
+   is specified, all the files MUST be encoded as `UTF-8` (except `.xilia`).
+   Otherwise, every file MUST be encoded as `ASCII`.
  - `d`: A "loose" variation of a spec. In this version, many values
    can be left undefined (it is up to `compiler` to set defaults).
  - `g`: In this version, value types (in transforms/patches) may be
