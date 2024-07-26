@@ -22,7 +22,36 @@ Find definitions for terms `Preset`, `Transform` and `Patch` in the
 `Presets / Transforms / Patches` section intro.
 
 
-## Structure
+## Table Of Contents
+
+The structure of this document is as following:
+
+```
+XLA Specification v1.0.0
+├ Definitions
+├ Table Of Contents
+├ XLA Structure
+│ └ Note on XML format
+├ Metadata file (`.xilia`)
+│ └ Version flags
+├ Level manifest (`manifest.xml`)
+│ └ Basic level info (`level` tag)
+├ Presets / Transforms / Patches
+│ └ Defining elements in XML
+│   ├ Spec for creating elements
+│   │ ├ Describing preset
+│   │ ├ Describing transformations
+│   │ └ Describing patches
+│   └ Value types
+└ Meshes / entities / level logic
+  ├ Describing meshes
+  ├ Game logic elements
+  └ Main level file
+    └ Structure example for `level.xml`
+```
+
+
+## XLA Structure
 
 `XLA` is a complex file format.
 Any assets are stored alongside data, for which XML format is used.
