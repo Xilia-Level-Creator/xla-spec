@@ -76,6 +76,11 @@ The general structure of files inside the tarball is as follows:
 Please refer to the rest of sections in this document for additional info
 on each one of the elements of this file structure.
 
+Note that `.xilia` and `manifest.xml` files MUST be included in the archive.
+If `level.xml` is absent, the level is empty; if `logic.xml` or `mesh.xml` are
+not present, the level contains no elements; if `assets` folder is absent,
+no custom presets / transforms are used (more details further in the spec).
+
 ### Note on XML format
 
 It is RECOMMENDED to specify XML version in `.xml` files, like so:
@@ -192,7 +197,7 @@ Following is the mapping between XML in `level` tag, and fields in
    contain any other tags. Each `description` tag is a string.
    Maps to `descriptions` array in `manifest.json`
  - `information`: level information (string), maps to `information` in
-   `manifest.json`.
+   `manifest.json`. MAY be empty.
  - `entry-point`: path to the main entry point file. This is ultimately
    decided by `Compiler`, and including this field is OPTIONAL. If the
    `entry-point` field is present, it MAY be used by `Compiler`.
@@ -208,9 +213,9 @@ Following is the mapping between XML in `level` tag, and fields in
    not give any stars (like `Just Pong`).
 
 Unless stated otherwise, all the mentioned tags MUST NOT be empty in standard
-spec version. If the spec version used includes `d` flag (see `Metadata file`
-section, `Version flags` subsection), fields with no required children
-MAY be empty.
+spec version (and MUST be present. If the spec version used includes `d`
+flag (see `Metadata file` section, `Version flags` subsection), fields with
+no required children MAY be empty and MAY be missing.
 
 Note that `PewPew API` imposes lenght limits on some of the fields. Those
 are not imposed by this spec, instead it is left up to the `Compiler`.
